@@ -9,7 +9,7 @@ export default function Home() {
     const [showModal, setShowModal] = useState(false);
 
     const saveSticky = (current) => {
-        console.log(current);
+        current.text = current.text.trim();
 
         var newStickies = [...stickies];
         if (!current.text) {

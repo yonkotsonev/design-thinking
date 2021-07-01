@@ -11,7 +11,7 @@ export default function StickyItem(props) {
 		<div 
 			id={props.id} 
 			onClick={openModal} 
-			className="bg-warning sticky m-1 p-1 border border-2 border-dark {props.value.color}"
+			className={`sticky m-1 p-1 border border-2 border-dark ${props.value.color}`}
 		>{props.value.text}</div>
 	)
 }
