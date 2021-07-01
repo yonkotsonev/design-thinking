@@ -85,7 +85,7 @@ export default function Home() {
                     });
                 });
 
-                setStickies(newStickies);
+                finish(newStickies);
             });
 
             reader.readAsText(file);
