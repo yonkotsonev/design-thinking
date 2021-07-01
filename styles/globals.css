@@ -28,7 +28,7 @@ main {
   height: 10%;
 }
 
-#sticky {
+#modal {
   position: absolute;
   float: left;
   left: 50%;
@@ -37,7 +37,6 @@ main {
   width: 50%;
   transform: translate(-50%, 0%);
   z-index: 1080;
-  display: none;
 }
 
 textarea {
@@ -75,7 +74,7 @@ textarea {
 }
 
 @media only screen and (max-width: 600px) {
-  #sticky {
+  #modal {
     width: 90%;
     top: 10%;
     bottom: 10%;
