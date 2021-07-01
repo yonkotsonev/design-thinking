@@ -109,7 +109,7 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
 
-            <main className = "border border-1 border-dark" >
+            <main className="">
                 <div className="border-bottom border-1 border-dark buttons btn-group p-3 w-100">
                     <button className="btn btn-dark mx-1" onClick={() => { setShowModal(true) }}>Create Sticky</button>
                     <button className="btn btn-danger mx-1" onClick={() => setStickies([])}>Clear Board</button>
@@ -119,7 +119,7 @@ export default function Home() {
                     <button className="btn btn-outline-primary mx-1 btn-sm" onClick={importCSV}>Import CSV</button>
                 </div>
 
-                <div className = "my-2 w-100 h-90" >
+                <div className = "my-2 w-100 h-85" >
                     <div id="content">
                         {stickies.map((value, index) => {
                             return <StickyItem key={index} id={index} value={value} setShowModal={setShowModal}  setSelected={setSelected} />
