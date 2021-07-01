@@ -27,15 +27,27 @@ export default function Home() {
             });
         }
 
-        setStickies(newStickies);
-        setShowModal(false);
-        setSelected({});
+        finish(newStickies);
     };
 
     const deleteSticky = (current) => {
         if (current.id >= 0) {
             var newStickies = [...stickies];
             newStickies.splice(current.id, 1);
+
+            return finish(newStickies);
+        }
+
+        finish();
+    }
+
+    const finish = (newStickies = []) => {
+        if (newStickies.length > 0) {
+            newStickies.sort((a, b) => {
+                if (a.color > b.color) return -1;
+                if (a.color < b.color) return 1;
+                return 0;
+            });
 
             setStickies(newStickies);
         }

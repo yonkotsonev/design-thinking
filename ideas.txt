@@ -1,8 +1,3 @@
-1. Change stickies from text to a {} with color
-2. Create Sticky component for showing stickies on board. Make it handle save, delete on it own (by using a onSave/onDelete prop,) but it should hold the whole info for itself so it can open, close  a modal. Maybe modal should be different for ne and edit
-3. Make the Sticky list to use the Sticky component for displaying
-4. Make stickies to be able to use different colours
-2. Sort stickies by color on save or delete
 3. Make stickies exportable as pdf - allow putting a title of the pdf and description
 4. Make stickies exportable as csv
 5. Import stickies from csv
