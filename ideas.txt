@@ -1,3 +1,8 @@
-3. Make stickies exportable as pdf - allow putting a title of the pdf and description
-4. Make stickies exportable as csv
-5. Import stickies from csv
+- Make stickies exportable as pdf - allow putting a title of the pdf and description
+- Add service worker so the sticky App can work offline and as a mobil App
+- Add Home Screen with:
+	* Start Session
+	* Join Session
+
+- Create a session logic so More people can watch same session and join a session on its ID
+- Create an end session logic - when all connectors to a session leave session ends
