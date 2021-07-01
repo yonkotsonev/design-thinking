@@ -56,6 +56,44 @@ export default function Home() {
         setSelected({});
     }
 
+    const exportCSV = () => {
+        var text = '';
+        stickies.forEach((sticky) => {
+            text += `${sticky.color}, ${sticky.text}\n`;
+        });
+
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', 'board.csv');
+        element.click();
+    }
+
+    const importCSV = () => {
+        const element = document.createElement('input');
+        element.type = 'file';
+        element.addEventListener('change', (e) => {
+            var newStickies = [...stickies];
+
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.addEventListener('load', (event) => {
+                event.target.result.trim().split("\n").forEach((row) => {
+                    const [color, text] = row.split(",");
+                    newStickies.push({
+                        text: text,
+                        color: color
+                    });
+                });
+
+                setStickies(newStickies);
+            });
+
+            reader.readAsText(file);
+        });
+
+        element.click();
+    }
+
     return ( 
         <>
             <Head>
@@ -64,9 +102,13 @@ export default function Home() {
             </Head>
 
             <main className = "border border-1 border-dark" >
-                <div className="border border-1 border-dark buttons btn-group p-3 w-100">
+                <div className="border-bottom border-1 border-dark buttons btn-group p-3 w-100">
                     <button className="btn btn-dark mx-1" onClick={() => { setShowModal(true) }}>Create Sticky</button>
                     <button className="btn btn-danger mx-1" onClick={() => setStickies([])}>Clear Board</button>
+                </div>
+                <div className="w-100 p-1 text-center">
+                    <button className="btn btn-outline-primary mx-1 btn-sm" onClick={exportCSV}>Export CSV</button>
+                    <button className="btn btn-outline-primary mx-1 btn-sm" onClick={importCSV}>Import CSV</button>
                 </div>
 
                 <div className = "my-2 w-100 h-90" >
