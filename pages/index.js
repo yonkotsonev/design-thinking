@@ -57,6 +57,10 @@ export default function Home() {
     }
 
     const exportCSV = () => {
+        if (stickies.length < 1) {
+            return;
+        }
+
         var text = '';
         stickies.forEach((sticky) => {
             text += `${sticky.color}, ${sticky.text}\n`;
@@ -79,6 +83,10 @@ export default function Home() {
             reader.addEventListener('load', (event) => {
                 event.target.result.trim().split("\n").forEach((row) => {
                     const [color, text] = row.split(",");
+                    if (!color || !text) {
+                        return;
+                    }
+
                     newStickies.push({
                         text: text,
                         color: color
