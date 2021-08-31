@@ -48,9 +48,9 @@ export default function Home() {
                 if (a.color < b.color) return 1;
                 return 0;
             });
-
-            setStickies(newStickies);
         }
+
+        setStickies(newStickies);
 
         setShowModal(false);
         setSelected({});
@@ -82,9 +82,17 @@ export default function Home() {
             const reader = new FileReader();
             reader.addEventListener('load', (event) => {
                 event.target.result.trim().split("\n").forEach((row) => {
-                    const [color, text] = row.split(",");
-                    if (!color || !text) {
-                        return;
+                    if(!row) return;
+
+                    var color, text;
+                    if (row.indexOf("bg-") < 0) {
+                       color = 'bg-warning';
+                       text = row.trim();
+
+                    } else {
+                        const comma = row.indexOf(",")
+                        color = row.substring(0, comma).trim();
+                        text = row.substring(comma + 1).trim();
                     }
 
                     newStickies.push({
